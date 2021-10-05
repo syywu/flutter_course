@@ -73,6 +73,13 @@ class _MyAppState extends State<MyApp> {
   //var used instead of int as we have already stated a number 0
   var _totalScore = 0;
 
+  void _resetQuiz() {
+    setState(() {
+      _questionIndex = 0;
+      _totalScore = 0;
+    });
+  }
+
   void _answerQuestion(int score) {
     _totalScore += score;
     //_totalScore = _totalScore + score;
@@ -114,7 +121,7 @@ class _MyAppState extends State<MyApp> {
                   questions: _questions,
                   questionIndex: _questionIndex)
               //since questions is a property of an entire class, it should be private only available in myAppState to be in line with _questionIndex
-              : Results(_totalScore)
+              : Results(_totalScore, _resetQuiz)
           //center widget takes everything into centre
           //bdy only takes one widget
           //all widgets are classes
